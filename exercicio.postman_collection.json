@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "f7e46ca6-d7fc-4996-a507-5b6373492cbf",
+		"name": "exercicio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "19c62e18-ac26-47a4-b649-16b07dae05b8",
+						"exec": [
+							"pm.test(\"Tudo certo, Usuário criado.\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"id\": 2,\r\n    \"name\": \"Usuário 2\",\r\n    \"location\": \"Canadá\"\r\n  }"
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3e37a393-f6cb-4b21-98f3-641ae753fb55",
+						"exec": [
+							"pm.test(\"Tudo certo, Usuário criado.\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Tudo certo, ID certo.\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"2\");",
+							"});",
+							"pm.test(\"Tudo certo, Nome certo.\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Usuário 2\");",
+							"});",
+							"pm.test(\"Tudo certo, a localização tá certa\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Brasil\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"id\": 2,\r\n    \"name\": \"Leticia Exercicio Playtest\",\r\n    \"location\": \"Canadá\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3daa4e45-bf4c-4b87-9ab4-c587cb7c6131",
+						"exec": [
+							"pm.test(\"Tudo certo, Nome certo.\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Leticia Exercicio Playtest\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/users/2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "743ade46-df16-4290-8397-05866ead8dc4",
+						"exec": [
+							"pm.test(\"Ok. Usuário não encontrado.\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Leticia Exercicio Playtest\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a2cf4798-51e5-48b9-b594-68db216e38e2",
+						"exec": [
+							"pm.test(\"Ok. Usuário não encontrado.\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Leticia Exercicio Playtest\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
